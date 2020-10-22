@@ -18,13 +18,7 @@ def startTimer(min):
     
 
 def function ():
-    with open("Top 50 Alexa sites/top-1m.csv") as reader:
-
-        line = reader.readline()
-        while line != '' and (not timerHasGone):
-            print("fine->"+ line)
-            driver.get("http://"+line)
-            line = reader.readline()
+    driver.get("http://www.apple.com")
 
 
 
@@ -42,7 +36,7 @@ startTimer(min)
 driver = webdriver.Chrome("./chromedriver")
 
 #avvio ciclo infinito
-while (not timerHasGone):
-    function()
+
+function()
 
 
