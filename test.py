@@ -1,5 +1,6 @@
 from selenium import webdriver
 from threading import Timer
+import sys
 
 timerHasGone = False;
 
@@ -29,7 +30,14 @@ def function ():
             line = reader.readline()
 
 #avvio il timer
-startTimer(1)  
+min = sys.argv[-1]
+
+if min=='' or min==None: 
+	min=1
+else:
+	min=int(min)
+
+startTimer(min)  
 
 #avvio ciclo infinito
 while True and (not timerHasGone):
