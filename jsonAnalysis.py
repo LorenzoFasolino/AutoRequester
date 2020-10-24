@@ -103,12 +103,14 @@ with open('Top 50 Alexa sites/top-1m.csv') as f:
     for line in f.read().splitlines():
         elencoSitiIniziali.add(line)
 
+# salvo i siti chiamati da script
 i = 1
 with open("result/"+url.split('.')[0].split('/')[1]+"_elencoSitiChiamati.txt", "w+") as out:
     for item in elencoSitiIniziali:
         out.write(str(i)+") "+str(item)+"\n")
         i += 1
 
+# salvo i siti di terze parti
 i = 1
 with open("result/"+url.split('.')[0].split('/')[1]+"_elencoSitiTerziChiamati.txt", "w+") as out:
     for item in sitiVisitati.difference(elencoSitiIniziali):
