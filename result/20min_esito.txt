@@ -1,0 +1,4 @@
+I pacchetti in totale sono 13099
+I pacchetti https sono 12326
+I pacchetti http2 sono 10655
+I pacchetti http che non usano ssl sono 772 (773)
