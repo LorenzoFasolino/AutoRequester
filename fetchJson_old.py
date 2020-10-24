@@ -11,26 +11,10 @@ countHttpDue = 0
 countHttpDueSettings = 0
 data = None
 elencoHttp = set()
-elencoHttp2 = set()
 i = 0
 
-def dict_raise_on_duplicates(ordered_pairs):
-    """Convert duplicate keys to JSON array."""
-    d = {}
-    for k, v in ordered_pairs:
-        if k in d:
-            if type(d[k]) is list:
-                d[k].append(v)
-            else:
-                d[k] = [d[k],v]
-        else:
-           d[k] = v
-    return d
-
 with open(url, encoding='utf-8') as file:
-    f = file.read()
-    data = json.loads(f, object_pairs_hook=dict_raise_on_duplicates )
-
+    data = json.load(file)
     for d in data:
         
         tcpDstport = d['_source']['layers']['tcp']['tcp.dstport']
@@ -47,12 +31,7 @@ with open(url, encoding='utf-8') as file:
         # prelevo tutti i siti visitati
         if ('http2' in contenutoLayers):
             countHttpDue += 1
-            if 'http2.stream' in contenutoLayers['http2']:
-                if 'http2.header' in contenutoLayers['http2']['http2.stream']:
-                    for elem in contenutoLayers['http2']['http2.stream']['http2.header']:
-                        if elem['http2.header.name'] == "referer":
-                            elencoHttp2.add(elem['http2.header.value'])
-
+            # cerco  "http2.header.name": "referer",
 
         elif ('http' in contenutoLayers):
             # cerco  "http.host":
@@ -80,19 +59,5 @@ print("I pacchetti http2 Settings sono " + str(countHttpDueSettings) + "\n")
 print("I pacchetti http che non usano ssl sono " +
       str(countHttp) + " (" + (str(len(data)-countHttps)) + ")\n")
 
-#stampo i siti http
-#print(str(elencoHttp) )
-#print(str(elencoHttp2) )
-
-
-
-json_data = []
-
-for item in elencoHttp:
-    json_data.append(item)
-for item in elencoHttp2:
-    json_data.append(item)
-
-with open("elencoSiti.json","w") as out:
-    out.write(json.dumps(json_data))
-
+# stampo i siti http
+# print(str(elencoHttp) )
