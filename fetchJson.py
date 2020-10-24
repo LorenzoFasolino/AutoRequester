@@ -35,7 +35,7 @@ with open(url, encoding='utf-8') as file:
 
         elif ('http' in contenutoLayers):
             # cerco  "http.host":
-            elencoHttp.add(d['_source']['layers']['http']['http.host'])
+            elencoHttp.add(contenutoLayers['http']['http.host'])
         
         # pacchetti non meglio identificati
             # if len(d['_source']['layers']['http2'].keys()) > 1:
