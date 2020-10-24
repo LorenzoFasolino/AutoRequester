@@ -68,6 +68,7 @@ print("I pacchetti http che non usano ssl sono " +
       str(countHttp) + " (" + (str(len(data)-countHttps)) + ")\n")
 
 
+####################################################
 # TODO forse non serve più salvare i siti nel json
 # Ho trovato una soluzione con gli insiemi
 
@@ -80,7 +81,7 @@ print("I pacchetti http che non usano ssl sono " +
 # salvo i siti chiamati in un file json
 # with open("elencoSitiChiamati.json","w") as out:
 #     out.write(json.dumps(json_data))
-
+####################################################
 
 # stampo i siti http
 #print(str(elencoHttp) )
