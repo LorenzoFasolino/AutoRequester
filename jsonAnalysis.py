@@ -53,14 +53,15 @@ with open(url, encoding='utf-8') as file:
                     for elem in contenutoLayers['http2']['http2.stream']['http2.header']:
                         if elem['http2.header.name'] == "referer":
                             urlRichiesta2 = ""
-                            if (str(elem['http2.header.value']).startswith('https://')):
-                                urlRichiesta2 = str(elem['http2.header.value']).split(
+                            http2HeaderValue = elem['http2.header.value']
+                            if (str(http2HeaderValue).startswith('https://')):
+                                urlRichiesta2 = str(http2HeaderValue).split(
                                     'https://')[1].split('/')[0]
-                            elif (str(elem['http2.header.value']).startswith('http://')):
-                                urlRichiesta2 = str(elem['http2.header.value']).split(
+                            elif (str(http2HeaderValue).startswith('http://')):
+                                urlRichiesta2 = str(http2HeaderValue).split(
                                     'http://')[1].split('/')[0]
                             else:
-                                urlRichiesta2 = str(elem['http2.header.value'])
+                                urlRichiesta2 = str(http2HeaderValue)
                             if urlRichiesta2.strip() != "":
                                 if not urlRichiesta2.startswith('www.'):
                                     urlRichiesta2 = "www."+urlRichiesta2
@@ -69,14 +70,15 @@ with open(url, encoding='utf-8') as file:
         elif ('http' in contenutoLayers):
             # cerco  "http.host":
             urlRichiesta = ""
-            if (contenutoLayers['http']['http.host'].startswith('https://')):
-                urlRichiesta = contenutoLayers['http']['http.host'].split(
+            httpHost = contenutoLayers['http']['http.host']
+            if (httpHost.startswith('https://')):
+                urlRichiesta = httpHost.split(
                     'https://')[1].split('/')[0]
-            elif (contenutoLayers['http']['http.host'].startswith('http://')):
-                urlRichiesta = contenutoLayers['http']['http.host'].split(
+            elif (httpHost.startswith('http://')):
+                urlRichiesta = httpHost.split(
                     'http://')[1].split('/')[0]
             else:
-                urlRichiesta = contenutoLayers['http']['http.host']
+                urlRichiesta = httpHost
             if urlRichiesta.strip() != "":
                 if not urlRichiesta.startswith('www.'):
                     urlRichiesta = "www."+urlRichiesta
@@ -99,7 +101,7 @@ sitiVisitati = elencoHttp.union(elencoHttp2)
 
 with open('Top 50 Alexa sites/top-1m.csv') as f:
     for line in f.read().splitlines():
-        elencoSitiIniziali.add(line)        
+        elencoSitiIniziali.add(line)
 
 i = 1
 with open("result/"+url.split('.')[0].split('/')[1]+"_elencoSitiChiamati.txt", "w+") as out:
