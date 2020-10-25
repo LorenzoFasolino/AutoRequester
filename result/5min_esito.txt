@@ -1,0 +1,7 @@
+I pacchetti in totale sono 3231
+I pacchetti https sono 2971
+I pacchetti http2 sono 2483
+I pacchetti http che non usano ssl sono 257 (260)
+I siti di interesse visitati sono 50
+I siti di terze parti visitati sono 151
+Lo script ha impiegato 0.49386153199999994 secondi per essere eseguito
