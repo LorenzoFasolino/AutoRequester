@@ -4,4 +4,4 @@ I pacchetti http2 sono 8570
 I pacchetti http che non usano ssl sono 664 (667)
 I siti di interesse visitati sono 50
 I siti di terze parti visitati sono 241
-Lo script ha impiegato 1.856546189 secondi per essere eseguito
+Lo script ha impiegato 1.9484137289999999 secondi per essere eseguito
